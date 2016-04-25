@@ -1,4 +1,4 @@
-<form>
+<form [ngFormModel]="form" (ngSubmit)="signup()">
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
@@ -7,14 +7,28 @@
 				<input 
 					id="username" 
 					type="text" 
-					class="form-control">
+					class="form-control"
+					ngControl="username"
+					#username="ngForm">
+				<div 
+					*ngIf="!username.valid"
+					class="alert alert-danger">
+					Username is required
+				</div>
 			</div>
 			<div class="form-group">
 				<label for="password">Password</label>
 				<input 
 					id="password" 
 					type="password" 
-					class="form-control">
+					class="form-control"
+					ngControl="password"
+					#password="ngForm">
+				<div 
+					*ngIf="!password.valid"
+					class="alert alert-danger">
+					Password is required
+				</div>
 			</div>
 			<button class="btn btn-primary" type="submit">Submit</button>
 		</div>
