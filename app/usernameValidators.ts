@@ -7,4 +7,15 @@ export class UsernameValidators {
 
 		return null;
 	}
+
+	static shouldbeUnique(control: Control) {
+		return new Promise((resolve, reject) => {
+			setTimeout(function(){
+				if(control.value == "Uva")
+					resolve({ shouldbeUnique: true });
+				else
+					resolve(null);
+			}, 1000);
+		});
+	}
 }

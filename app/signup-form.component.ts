@@ -20,12 +20,16 @@ export class SignupFormComponent {
 			username: ['', Validators.compose([
 				Validators.required,
 				UsernameValidators.cannotContainSpace
-			])],
+			]), UsernameValidators.shouldbeUnique],
 			password: ['', Validators.required],
 		})
 	}
 
 	signup() {
+		this.form.find('username').setErrors({
+			invalidLogin: true
+		});
+
 		console.log(this.form.value);
 	}
 }
